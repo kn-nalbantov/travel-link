@@ -1,6 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
 import Parse from 'parse/dist/parse.min.js';
+import { Outlet, Link } from 'react-router-dom';
 
 const PARSE_APPLICATION_ID = 'q4F1zNj3A1adPXkE9NB3OnpOVYHuqRxQb4HRjmqG';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
@@ -10,20 +9,25 @@ Parse.serverURL = PARSE_HOST_URL;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className='App'>
+      <header>
+        <nav>
+          <Link to='/'>Home</Link>
+          <Link to='/destinations'>All Destinations</Link>
+          <div id='guest'>
+            <Link to='/login'>Login</Link>
+            <Link to='/register'>Register</Link>
+          </div>
+          <div id='profile'>
+            <a className='welcomeMsg'>Welcome username</a>
+            <Link to='/profile'>My Destinations</Link>
+            <Link to='/create'>Add Destinations</Link>
+            <a href='javascript:void(0)' className='logoutBtn'>
+              Logout
+            </a>
+          </div>
+        </nav>
+        <Outlet />
       </header>
     </div>
   );
