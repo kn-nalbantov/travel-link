@@ -31,3 +31,11 @@ nav a.active {
   background-color: #4CAF50;
   color: white;
 }
+
+main {
+  padding: 10px;
+}
+
+main input, main label {
+  display: block;
+}

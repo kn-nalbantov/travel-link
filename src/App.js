@@ -27,8 +27,8 @@ function App() {
             </a>
           </div>
         </nav>
-        <Outlet />
       </header>
+      <Outlet />
     </div>
   );
 }

@@ -1,7 +1,13 @@
 export default function Login() {
     return (
-      <main style={{ padding: "1rem 0" }}>
+      <main>
         <h2>Login</h2>
+        <form>
+          <label htmlFor="email">email</label>
+          <input type="email" name="email"/>
+          <label htmlFor="password">password</label>
+          <input type="password" name="password"/>
+        </form>
       </main>
     );
   }
