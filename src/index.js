@@ -9,11 +9,13 @@ import Profile from './routes/profile';
 import Create from './routes/create';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './routes/home';
 
 ReactDOM.render(
   <BrowserRouter>
     <Routes>
       <Route path='/' element={<App />}>
+        <Route path='home' element={<Home />} />
         <Route path='destinations' element={<Destinations />} />
         <Route path='login' element={<Login />} />
         <Route path='register' element={<Register />} />
