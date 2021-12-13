@@ -1,5 +1,11 @@
 import Parse from 'parse/dist/parse.min.js';
-import { Outlet, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
+import Destinations from './routes/destinations';
+import Register from './routes/register';
+import Profile from './routes/profile';
+import Create from './routes/create';
+import Home from './routes/home';
+import Login from './routes/login';
 
 const PARSE_APPLICATION_ID = 'q4F1zNj3A1adPXkE9NB3OnpOVYHuqRxQb4HRjmqG';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
@@ -12,7 +18,7 @@ function App() {
     <div className='App'>
       <header>
         <nav>
-          <Link to='/home'>Home</Link>
+          <Link to='/'>Home</Link>
           <Link to='/destinations'>All Destinations</Link>
           <div id='guest'>
             <Link to='/login'>Login</Link>
@@ -28,7 +34,16 @@ function App() {
           </div>
         </nav>
       </header>
-      <Outlet />
+      <>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/destinations" element={<Destinations />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/create" element={<Create />} />
+        </Routes>
+      </>
     </div>
   );
 }

@@ -2,27 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Destinations from './routes/destinations';
-import Login from './routes/login';
-import Register from './routes/register';
-import Profile from './routes/profile';
-import Create from './routes/create';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Home from './routes/home';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<App />}>
-        <Route path='home' element={<Home />} />
-        <Route path='destinations' element={<Destinations />} />
-        <Route path='login' element={<Login />} />
-        <Route path='register' element={<Register />} />
-        <Route path='profile' element={<Profile />} />
-        <Route path='create' element={<Create />} />
-      </Route>
-    </Routes>
+    <App />
   </BrowserRouter>,
   document.getElementById('root')
 );
