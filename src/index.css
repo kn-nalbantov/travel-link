@@ -1,5 +1,6 @@
 body {
   font-family: Helveticca, sans-serif;
+  box-sizing: border-box;
 }
 
 nav {
@@ -8,13 +9,14 @@ nav {
   margin-bottom: 20px;
 }
 
-#profile, #guest {
+#profile,
+#guest {
   float: right;
 }
 
 /* Style the links inside the navigation bar */
 
-nav a {
+nav a, nav span {
   float: left;
   color: #f2f2f2;
   text-align: center;
@@ -26,23 +28,19 @@ nav a {
 /* Change the color of links on hover */
 
 nav a:hover {
-  background-color: #ddd;
+  background-color: #31a335;
   color: black;
 }
 
 /* Add a color to the active/current link */
 
 nav a.active {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
 
 main {
   padding: 10px;
-}
-
-main input, main label {
-  display: block;
 }
 
 .travelCard img {
@@ -52,7 +50,7 @@ main input, main label {
   display: inherit;
 }
 
-.travelCard {
+.travelCard, .registerBox {
   width: 500px;
   margin: auto;
   padding: 20px;
@@ -63,8 +61,28 @@ main input, main label {
 
 .travelCard button {
   border: none;
+  border-radius: 0.25em;
   cursor: pointer;
   margin-top: 15px;
   font-size: larger;
   background-color: #52b352;
+}
+
+div .register {
+  margin-bottom: 10px;
+}
+
+.registerBox label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.registerBox input[type="submit"] {
+  font-size: large;
+  border: none;
+  background-color: #31a335;
+  border-radius: 0.25em;
 }

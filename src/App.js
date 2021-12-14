@@ -25,10 +25,10 @@ function App() {
             <Link to='/register'>Register</Link>
           </div>
           <div id='profile'>
-            <a className='welcomeMsg'>Welcome username</a>
+            <span className='welcomeMsg'>Welcome username</span>
             <Link to='/profile'>My Destinations</Link>
             <Link to='/create'>Add Destinations</Link>
-            <a href='javascript:void(0)' className='logoutBtn'>
+            <a href='#!' className='logoutBtn' onClick={e => e.preventDefault()}>
               Logout
             </a>
           </div>
