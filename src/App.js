@@ -44,6 +44,7 @@ function App() {
           <Route path="/create" element={<Create />} />
         </Routes>
       </>
+      <footer>All rights reserved &copy;</footer>
     </div>
   );
 }

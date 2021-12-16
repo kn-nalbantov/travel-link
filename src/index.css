@@ -86,3 +86,11 @@ div .register {
   background-color: #31a335;
   border-radius: 0.25em;
 }
+
+footer {
+  position: absolute;
+  width: 100%;
+  border: 1px solid green;
+  bottom: 10px;
+  text-align: center;
+}
