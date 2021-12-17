@@ -35,7 +35,10 @@ async function request(url, options) {
 function createOptions(method = 'get', data) {
   const options = {
     method,
-    headers: {},
+    headers: {
+        'X-Parse-Application-Id': 'q4F1zNj3A1adPXkE9NB3OnpOVYHuqRxQb4HRjmqG',
+        'X-Parse-REST-API-Key': 'UzYSpqEOQhUM8SiENRuOECI1Q5k4pxdjD1ggrKZz'
+    },
   };
 
   if (data != undefined) {
@@ -72,8 +75,8 @@ export async function login(email, password) {
 
   const userData = {
     email: result.email,
-    id: result._id,
-    token: result.accessToken,
+    objectId: result._id,
+    sessionToken: result.accessToken,
   };
   setUserData(userData);
 
@@ -85,8 +88,8 @@ export async function register(email, password) {
 
   const userData = {
     email: result.email,
-    id: result._id,
-    token: result.accessToken,
+    objectId: result._id,
+    sessionToken: result.accessToken,
   };
   setUserData(userData);
 
