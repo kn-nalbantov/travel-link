@@ -1,22 +1,22 @@
-function setUserData(data) {
-    sessionStorage.setItem('userData', JSON.stringify(data));
+export function setUserData(data) {
+  sessionStorage.setItem('userData', JSON.stringify(data));
 }
 
-function getUserData() {
-    return JSON.parse(sessionStorage.getItem('userData'));
+export function getUserData() {
+  return JSON.parse(sessionStorage.getItem('userData'));
 }
 
-function clearUserData() {
-    sessionStorage.removeItem('userData');
+export function clearUserData() {
+  sessionStorage.removeItem('userData');
 }
 
-const hostname = 'https://parseapi.back4app.com/';
+const hostname = 'https://parseapi.back4app.com';
 
 async function request(url, options) {
   try {
     const res = await fetch(hostname + url, options);
 
-    if (res.ok == false) {
+    if (res.ok === false) {
       const error = await res.json();
       throw new Error(error.message);
     }
@@ -36,19 +36,14 @@ function createOptions(method = 'get', data) {
   const options = {
     method,
     headers: {
-        'X-Parse-Application-Id': 'q4F1zNj3A1adPXkE9NB3OnpOVYHuqRxQb4HRjmqG',
-        'X-Parse-REST-API-Key': 'UzYSpqEOQhUM8SiENRuOECI1Q5k4pxdjD1ggrKZz'
+      'X-Parse-Application-Id': 'q4F1zNj3A1adPXkE9NB3OnpOVYHuqRxQb4HRjmqG',
+      'X-Parse-REST-API-Key': 'UzYSpqEOQhUM8SiENRuOECI1Q5k4pxdjD1ggrKZz',
     },
   };
 
-  if (data != undefined) {
+  if (data !== undefined) {
     options.headers['Content-Type'] = 'application/json';
     options.body = JSON.stringify(data);
-  }
-
-  const userData = getUserData();
-  if (userData) {
-    options.headers['X-Authorization'] = userData.token;
   }
 
   return options;
@@ -71,25 +66,25 @@ export async function del(url) {
 }
 
 export async function login(email, password) {
-  const result = await post('/users/login', { email, password });
+  const result = await post('/login', { email, password });
 
   const userData = {
     email: result.email,
-    objectId: result._id,
-    sessionToken: result.accessToken,
+    objectId: result.objectId,
+    sessionToken: result.sessionToken,
   };
   setUserData(userData);
 
   return result;
 }
 
-export async function register(email, password) {
-  const result = await post('/users/register', { email, password });
+export async function register(username, email, password) {
+  const result = await post('/register', { username, email, password });
 
   const userData = {
     email: result.email,
-    objectId: result._id,
-    sessionToken: result.accessToken,
+    objectId: result.objectId,
+    sessionToken: result.sessionToken,
   };
   setUserData(userData);
 
@@ -97,5 +92,5 @@ export async function register(email, password) {
 }
 
 export async function logout() {
-  await get('/users/logout');
+  await post('/logout');
 }
