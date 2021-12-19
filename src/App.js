@@ -6,12 +6,19 @@ import Profile from './routes/profile';
 import Create from './routes/create';
 import Home from './routes/home';
 import Login from './routes/login';
+import * as api from './api.js';
+import { getDestinations } from './data.js';
 
 const PARSE_APPLICATION_ID = 'q4F1zNj3A1adPXkE9NB3OnpOVYHuqRxQb4HRjmqG';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
 const PARSE_JAVASCRIPT_KEY = '120df40Zs6IUxVQDl9rbmUzIXlnNCYHcEnP3UxIs';
 Parse.initialize(PARSE_APPLICATION_ID, PARSE_JAVASCRIPT_KEY);
 Parse.serverURL = PARSE_HOST_URL;
+
+/* DEBUG */
+window.api = api;
+window.Parse = Parse;
+window.getDestinations = getDestinations;
 
 function App() {
   return (
@@ -36,12 +43,12 @@ function App() {
       </header>
       <>
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/destinations" element={<Destinations />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/create" element={<Create />} />
+          <Route path='/' element={<Home />} />
+          <Route path='/destinations' element={<Destinations />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/register' element={<Register />} />
+          <Route path='/profile' element={<Profile />} />
+          <Route path='/create' element={<Create />} />
         </Routes>
       </>
       <footer>All rights reserved &copy;</footer>
