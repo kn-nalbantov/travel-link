@@ -1,11 +1,11 @@
 import Parse from 'parse/dist/parse.min.js';
 import { Routes, Route, Link } from 'react-router-dom';
-import Destinations from './routes/destinations';
-import Register from './routes/register';
-import Profile from './routes/profile';
-import Create from './routes/create';
-import Home from './routes/home';
-import Login from './routes/login';
+import Destinations from './routes/Destinations';
+import Register from './routes/Register';
+import Profile from './routes/Profile';
+import Create from './routes/Create';
+import Home from './routes/Home';
+import Login from './routes/Login';
 import * as api from './api.js';
 import { getDestinations } from './data.js';
 
