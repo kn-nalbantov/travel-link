@@ -1,13 +1,18 @@
 import { Link } from "react-router-dom";
+import { login } from "../api";
 
 export default function Login() {
   function onClick(e) {
     e.target.parentNode.children[1].focus();
   }
 
-  function onSubmit(e) {
+  async function onSubmit(e) {
     e.preventDefault();
-    console.log('submitted');
+    
+    const formData = new FormData(e.target);
+    const email = formData.get('email');
+    const password = formData.get('password');
+    await login(email, password);
   }
 
   return (
