@@ -31,7 +31,7 @@ export default function Register() {
           <label htmlFor='username' onClick={onClick}>
             Username
           </label>
-          <input type='text' name='email' />
+          <input type='text' name='username' />
         </div>
         <div className='register'>
           <label htmlFor='email' onClick={onClick}>
