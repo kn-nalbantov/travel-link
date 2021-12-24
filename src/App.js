@@ -1,13 +1,13 @@
 import Parse from 'parse/dist/parse.min.js';
 import { Routes, Route, Link } from 'react-router-dom';
 import Destinations from './routes/Destinations';
-import Register from './routes/Register';
 import Profile from './routes/Profile';
 import Create from './routes/Create';
 import Home from './routes/Home';
-import Login from './routes/Login';
 import * as api from './api.js';
 import { getDestinations } from './data.js';
+import Login from './routes/login';
+import Register from './routes/register';
 
 const PARSE_APPLICATION_ID = 'q4F1zNj3A1adPXkE9NB3OnpOVYHuqRxQb4HRjmqG';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
