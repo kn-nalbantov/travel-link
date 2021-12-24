@@ -21,24 +21,28 @@ window.Parse = Parse;
 window.getDestinations = getDestinations;
 
 function App() {
+  const user = api.getUserData();
   return (
     <div className='App'>
       <header>
         <nav>
           <Link to='/'>Home</Link>
           <Link to='/destinations'>All Destinations</Link>
-          <div id='guest'>
-            <Link to='/login'>Login</Link>
-            <Link to='/register'>Register</Link>
-          </div>
-          <div id='profile'>
-            <span className='welcomeMsg'>Welcome username</span>
-            <Link to='/profile'>My Destinations</Link>
-            <Link to='/create'>Add Destinations</Link>
-            <a href='#!' className='logoutBtn' onClick={e => e.preventDefault()}>
-              Logout
-            </a>
-          </div>
+          {!user ? (
+            <div id='guest'>
+              <Link to='/login'>Login</Link>
+              <Link to='/register'>Register</Link>
+            </div>
+          ) : (
+            <div id='profile'>
+              <span className='welcomeMsg'>Welcome, {user.username}</span>
+              <Link to='/profile'>My Destinations</Link>
+              <Link to='/create'>Add Destinations</Link>
+              <a href='#!' className='logoutBtn' onClick={e => e.preventDefault()}>
+                Logout
+              </a>
+            </div>
+          )}
         </nav>
       </header>
       <>

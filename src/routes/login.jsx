@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom';
-import { login } from '../api';
+import { useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import { getUserData, login } from '../api';
 
 export default function Login() {
+  const [user, setUser] = useState(getUserData());
+
   function onClick(e) {
     e.target.parentNode.children[1].focus();
   }
@@ -13,10 +16,12 @@ export default function Login() {
     const email = formData.get('email');
     const password = formData.get('password');
     await login(email, password);
+    setUser(getUserData());
   }
 
   return (
     <main className='registerBox'>
+      {user ? (<Navigate to="/" />) : null}
       <h2>Login</h2>
       <form onSubmit={onSubmit}>
         <div className='register'>
