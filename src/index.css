@@ -57,6 +57,7 @@ main {
   text-align: center;
   border: 1px solid black;
   box-shadow: 0 0 5px 5px #c9ccce;
+  margin-bottom: 25px;
 }
 
 .travelCard button {

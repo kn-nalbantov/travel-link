@@ -1,6 +1,6 @@
 import Parse from 'parse/dist/parse.min.js';
 import { Routes, Route, Link } from 'react-router-dom';
-import Destinations from './routes/Destinations';
+import Destinations from './routes/destinations';
 import Profile from './routes/Profile';
 import Create from './routes/Create';
 import Home from './routes/Home';
@@ -47,7 +47,7 @@ function App() {
       </header>
       <>
         <Routes>
-          <Route path='/' element={<Home />} />
+          <Route path='/' element={<Home name='the best monastery' />} />
           <Route path='/destinations' element={<Destinations />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
