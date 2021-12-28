@@ -1,7 +1,7 @@
 export default function Home(props) {
   return (
     <main className='travelCard'>
-      <h2>Rila Monastery {props.name}</h2>
+      <h2>Rila Monastery</h2>
       <p>
         Region: <a href='/'>South-West</a>
       </p>

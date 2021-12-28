@@ -21,7 +21,7 @@ export default function Login() {
 
   return (
     <main className='registerBox'>
-      {user ? (<Navigate to="/" />) : null}
+      {user && (<Navigate to="/" replace={true} />)}
       <h2>Login</h2>
       <form onSubmit={onSubmit}>
         <div className='register'>

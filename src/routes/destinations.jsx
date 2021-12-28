@@ -12,17 +12,17 @@ export default function Destinations() {
     fetchData();
   }, []);
 
-    return (
-      <main>
-        <h2>All Destinations</h2>
-    {destinations.map(x => (
-      <div className="travelCard">
-      <h2>{x.name}</h2>
-    <p>Region {x.region}</p>
-    <img src={x.img.url} alt={x.img.name}/>
-    <button className="detailsBtn">Details</button>
-    </div>
-    ))}
-      </main>
-    );
-  }
+  return (
+    <main>
+      <h2>All Destinations</h2>
+      {destinations.map(x => (
+        <div className='travelCard'>
+          <h2>{x.name}</h2>
+          <p>Region {x.region}</p>
+          <img src={x.img.url} alt={x.img.name} />
+          <button className='detailsBtn'>Details</button>
+        </div>
+      ))}
+    </main>
+  );
+}

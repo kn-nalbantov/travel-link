@@ -38,16 +38,16 @@ function App() {
               <span className='welcomeMsg'>Welcome, {user.username}</span>
               <Link to='/profile'>My Destinations</Link>
               <Link to='/create'>Add Destinations</Link>
-              <a href='#!' className='logoutBtn' onClick={e => e.preventDefault()}>
+              <span className='logoutBtn' onClick={e => e.preventDefault()}>
                 Logout
-              </a>
+              </span>
             </div>
           )}
         </nav>
       </header>
       <>
         <Routes>
-          <Route path='/' element={<Home name='the best monastery' />} />
+          <Route path='/' element={<Home />} />
           <Route path='/destinations' element={<Destinations />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
