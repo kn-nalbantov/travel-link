@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 import Destinations from './routes/destinations';
 import Profile from './routes/Profile';
 import Create from './routes/Create';
-import Home from './routes/Home';
+import Home from './routes/home';
 import * as api from './api.js';
 import { getDestinations } from './data.js';
 import Login from './routes/login';
