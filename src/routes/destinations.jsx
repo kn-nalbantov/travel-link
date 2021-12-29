@@ -17,7 +17,7 @@ export default function Destinations() {
       <h2 className="banner-header">All Destinations</h2>
       <main>
         {destinations.map(x => (
-          <div className='travelCard'>
+          <div className='travelCard' key={x.objectId}>
             <h2>{x.name}</h2>
             <p>Region {x.region}</p>
             <img src={x.img.url} alt={x.img.name} />
