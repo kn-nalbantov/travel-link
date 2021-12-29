@@ -16,7 +16,8 @@ nav {
 
 /* Style the links inside the navigation bar */
 
-nav a, nav span {
+nav a,
+nav span {
   float: left;
   color: #f2f2f2;
   text-align: center;
@@ -27,7 +28,9 @@ nav a, nav span {
 
 /* Change the color of links on hover */
 
-nav a:hover {
+nav a:hover,
+.logoutBtn:hover {
+  cursor: pointer;
   background-color: #31a335;
   color: black;
 }
@@ -41,6 +44,9 @@ nav a.active {
 
 main {
   padding: 10px;
+  margin-top: 25px;
+  height: 500px;
+  overflow: scroll;
 }
 
 .travelCard img {
@@ -50,7 +56,8 @@ main {
   display: inherit;
 }
 
-.travelCard, .registerBox {
+.travelCard,
+.registerBox {
   width: 500px;
   margin: auto;
   padding: 20px;
@@ -81,7 +88,7 @@ div .register {
   cursor: pointer;
 }
 
-.registerBox input[type="submit"] {
+.registerBox input[type='submit'] {
   font-size: large;
   border: none;
   background-color: #31a335;
@@ -89,9 +96,16 @@ div .register {
 }
 
 footer {
-  position: absolute;
+  position: relative;
   width: 100%;
   border: 1px solid green;
   bottom: 10px;
   text-align: center;
+  margin-top: 50px;
+}
+
+.banner-header {
+  text-align: center;
+  width: 100%;
+  margin: auto;
 }

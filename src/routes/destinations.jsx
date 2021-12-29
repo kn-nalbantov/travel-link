@@ -13,16 +13,18 @@ export default function Destinations() {
   }, []);
 
   return (
-    <main>
-      <h2>All Destinations</h2>
-      {destinations.map(x => (
-        <div className='travelCard'>
-          <h2>{x.name}</h2>
-          <p>Region {x.region}</p>
-          <img src={x.img.url} alt={x.img.name} />
-          <button className='detailsBtn'>Details</button>
-        </div>
-      ))}
-    </main>
+    <>
+      <h2 className="banner-header">All Destinations</h2>
+      <main>
+        {destinations.map(x => (
+          <div className='travelCard'>
+            <h2>{x.name}</h2>
+            <p>Region {x.region}</p>
+            <img src={x.img.url} alt={x.img.name} />
+            <button className='detailsBtn'>Details</button>
+          </div>
+        ))}
+      </main>
+    </>
   );
 }

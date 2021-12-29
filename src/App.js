@@ -27,7 +27,12 @@ function App() {
   function loginCallback() {
     setUser(api.getUserData());
   }
-  
+
+  function logout(e) {
+    e.preventDefault();
+    console.log('logged out');
+  }
+
   return (
     <div className='App'>
       <header>
@@ -44,7 +49,7 @@ function App() {
               <span className='welcomeMsg'>Welcome, {user.username}</span>
               <Link to='/profile'>My Destinations</Link>
               <Link to='/create'>Add Destinations</Link>
-              <span className='logoutBtn' onClick={e => e.preventDefault()}>
+              <span className='logoutBtn' onClick={logout}>
                 Logout
               </span>
             </div>
