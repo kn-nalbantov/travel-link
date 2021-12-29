@@ -1,8 +1,8 @@
 import Parse from 'parse/dist/parse.min.js';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import Destinations from './routes/destinations';
-import Profile from './routes/Profile';
-import Create from './routes/Create';
+import Profile from './routes/profile';
+import Create from './routes/create';
 import Home from './routes/home';
 import * as api from './api.js';
 import { getDestinations } from './data.js';
@@ -23,14 +23,16 @@ window.getDestinations = getDestinations;
 
 function App() {
   const [user, setUser] = useState(api.getUserData());
+  const navigate = useNavigate();
 
   function loginCallback() {
     setUser(api.getUserData());
   }
 
-  function logout(e) {
-    e.preventDefault();
-    console.log('logged out');
+  function logout() {
+    api.clearUserData();
+    setUser(api.getUserData());
+    navigate('/login', { replace: true });
   }
 
   return (
