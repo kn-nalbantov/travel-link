@@ -1,7 +1,10 @@
-import { Link } from 'react-router-dom';
-import { register } from '../api';
+import { useState } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import { getUserData, register } from '../api';
 
-export default function Register() {
+export default function Register(props) {
+  const [user, setUser] = useState(getUserData());
+
   function onClick(e) {
     e.target.parentNode.children[1].focus();
   }
@@ -21,10 +24,13 @@ export default function Register() {
       return alert('Passwords don\'t match!');
     }
     await register(username, email, password);
+    setUser(getUserData());
+    props.loginCallback();
   }
 
   return (
     <main className='registerBox'>
+      {user && (<Navigate to="/" replace={true} />)}
       <h2>Register</h2>
       <form onSubmit={onSubmit}>
         <div className='register'>

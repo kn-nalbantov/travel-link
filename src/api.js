@@ -80,11 +80,11 @@ export async function login(email, password) {
 }
 
 export async function register(username, email, password) {
-  const result = await post('/register', { username, email, password });
+  const result = await post('/users', { username, email, password });
 
   const userData = {
-    username: result.username,
-    email: result.email,
+    username: username,
+    email: email,
     objectId: result.objectId,
     sessionToken: result.sessionToken,
   };

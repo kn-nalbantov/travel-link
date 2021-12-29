@@ -23,9 +23,11 @@ window.getDestinations = getDestinations;
 
 function App() {
   const [user, setUser] = useState(api.getUserData());
+
   function loginCallback() {
     setUser(api.getUserData());
   }
+  
   return (
     <div className='App'>
       <header>
@@ -54,7 +56,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/destinations' element={<Destinations />} />
           <Route path='/login' element={<Login loginCallback={loginCallback} />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<Register loginCallback={loginCallback} />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/create' element={<Create />} />
         </Routes>
