@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { getUserData, login } from '../api';
 
-export default function Login() {
+export default function Login(props) {
   const [user, setUser] = useState(getUserData());
 
   function onClick(e) {
@@ -17,6 +17,7 @@ export default function Login() {
     const password = formData.get('password');
     await login(email, password);
     setUser(getUserData());
+    props.loginCallback();
   }
 
   return (

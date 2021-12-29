@@ -8,6 +8,7 @@ import * as api from './api.js';
 import { getDestinations } from './data.js';
 import Login from './routes/login';
 import Register from './routes/register';
+import { useState } from 'react';
 
 const PARSE_APPLICATION_ID = 'q4F1zNj3A1adPXkE9NB3OnpOVYHuqRxQb4HRjmqG';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
@@ -21,7 +22,10 @@ window.Parse = Parse;
 window.getDestinations = getDestinations;
 
 function App() {
-  const user = api.getUserData();
+  const [user, setUser] = useState(api.getUserData());
+  function loginCallback() {
+    setUser(api.getUserData());
+  }
   return (
     <div className='App'>
       <header>
@@ -49,7 +53,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/destinations' element={<Destinations />} />
-          <Route path='/login' element={<Login />} />
+          <Route path='/login' element={<Login loginCallback={loginCallback} />} />
           <Route path='/register' element={<Register />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/create' element={<Create />} />
