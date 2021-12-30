@@ -67,6 +67,16 @@ main {
   margin-bottom: 25px;
 }
 
+.createBox {
+  width: 450px;
+  padding: 20px;
+  text-align: left;
+  border: 1px solid black;
+  box-shadow: 0 0 5px 5px #c9ccce;
+  margin-left: 50px;
+  margin-bottom: 25px;
+}
+
 .travelCard button {
   border: none;
   border-radius: 0.25em;
@@ -80,12 +90,14 @@ div .register {
   margin-bottom: 10px;
 }
 
-.registerBox label {
+.registerBox label,
+.createBox label {
   display: inline-block;
   width: 150px;
   text-align: right;
   margin-right: 5px;
   cursor: pointer;
+  vertical-align: top;
 }
 
 .registerBox input[type='submit'] {
@@ -93,6 +105,19 @@ div .register {
   border: none;
   background-color: #31a335;
   border-radius: 0.25em;
+}
+
+.createBox input {
+  margin: 2px;
+}
+
+.createBox input[type='submit'] {
+  display: block;
+  text-align: center;
+  width: 140px;
+  font-size: large;
+  margin: auto;
+  cursor: pointer;
 }
 
 footer {
