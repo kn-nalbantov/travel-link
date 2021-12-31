@@ -1,3 +1,5 @@
+import { Parse } from "./App";
+
 export function setUserData(data) {
   sessionStorage.setItem('userData', JSON.stringify(data));
 }
@@ -95,4 +97,30 @@ export async function register(username, email, password) {
 
 export async function logout() {
   await post('/logout');
+}
+
+export async function createDestination(name, region, img, description) {
+  const fileToBase64 = await getBase64(img);
+  const myNewObject = new Parse.Object('destinations');
+  myNewObject.set('name', name);
+  myNewObject.set('region', region);
+  myNewObject.set('img', new Parse.File(img.name, { base64: fileToBase64 }));
+  myNewObject.set('description', description);
+  myNewObject.set('createdBy', Parse.User.current());
+  try {
+    const result = await myNewObject.save();
+    // Access the Parse Object attributes using the .GET method
+    console.log('destination created', result);
+  } catch (error) {
+    console.error('Error while creating destinations: ', error);
+  }
+
+  function getBase64(file) {
+    return new Promise(function(resolve, reject) {
+      let reader = new FileReader();
+      reader.onload = function() { resolve(reader.result); };
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+  }
 }
