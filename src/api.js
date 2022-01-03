@@ -1,4 +1,4 @@
-import { Parse } from "./App";
+import { Parse } from './App';
 
 export function setUserData(data) {
   sessionStorage.setItem('userData', JSON.stringify(data));
@@ -116,11 +116,29 @@ export async function createDestination(name, region, img, description) {
   }
 
   function getBase64(file) {
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       let reader = new FileReader();
-      reader.onload = function() { resolve(reader.result); };
+      reader.onload = function () {
+        resolve(reader.result);
+      };
       reader.onerror = reject;
       reader.readAsDataURL(file);
     });
+  }
+}
+
+export async function getDestinationsByOwnerId(ownerId) {
+  const destinations = Parse.Object.extend('destinations');
+  const query = new Parse.Query(destinations);
+  query.equalTo('createdBy', {
+    "__type": "Pointer",
+    "className": "_User",
+    "objectId": ownerId
+});
+  try {
+    const results = await query.find();
+    return results;
+  } catch (error) {
+    console.error('Error while fetching destinations', error);
   }
 }

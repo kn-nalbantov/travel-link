@@ -20,6 +20,7 @@ Parse.serverURL = PARSE_HOST_URL;
 window.api = api;
 window.Parse = Parse;
 window.getDestinations = getDestinations;
+window.getDestinationsByOwnerId = api.getDestinationsByOwnerId;
 
 function App() {
   const [user, setUser] = useState(api.getUserData());
