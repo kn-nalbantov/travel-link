@@ -12,13 +12,11 @@ export default function Profile() {
   useEffect(() => {
     async function fetchData() {
       const res = await getDestinationsByOwnerId(ownerId);
-      // console.log(res)
       setDestinations(res);
     }
     fetchData();
   }, []);
 
-  // console.log(ownerId);
   try{
 
     console.log(destinations[0].attributes);
