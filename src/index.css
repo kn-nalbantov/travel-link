@@ -77,13 +77,18 @@ main {
   margin-bottom: 25px;
 }
 
-.travelCard button {
+.detailsBtn, .editBtn {
   border: none;
   border-radius: 0.25em;
   cursor: pointer;
   margin-top: 15px;
   font-size: larger;
   background-color: #52b352;
+}
+
+.editBtn {
+  background-color: #664dd4ab;
+  margin-left: 15px;
 }
 
 div .register {
