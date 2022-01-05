@@ -15,12 +15,7 @@ export default function Profile() {
       setDestinations(res);
     }
     fetchData();
-  }, []);
-
-  try{
-
-    console.log(destinations[0].attributes);
-  }catch{}
+  });
 
   return (
     <>
