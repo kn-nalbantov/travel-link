@@ -23,9 +23,16 @@ export default function Register(props) {
     if (password !== rePass) {
       return alert("Passwords don't match!");
     }
-    await register(username, email, password);
-    setUser(getUserData());
-    props.loginCallback();
+    try {
+      e.target.children[4].children[0].disabled = true;
+      await register(username, email, password);
+      setUser(getUserData());
+      props.loginCallback();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      e.target.children[4].children[0].disabled = false;
+    }
   }
 
   return (

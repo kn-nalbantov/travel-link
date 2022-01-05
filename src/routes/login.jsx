@@ -15,9 +15,16 @@ export default function Login(props) {
     const formData = new FormData(e.target);
     const email = formData.get('email');
     const password = formData.get('password');
-    await login(email, password);
-    setUser(getUserData());
-    props.loginCallback();
+    try {
+      e.target.children[2].children[0].disabled = true;
+      await login(email, password);
+      setUser(getUserData());
+      props.loginCallback();
+    } catch (err) {
+      console.log(err);
+    } finally {
+      e.target.children[2].children[0].disabled = false;
+    }
   }
 
   return (
