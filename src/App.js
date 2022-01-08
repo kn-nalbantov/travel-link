@@ -9,6 +9,7 @@ import { getDestinations } from './data.js';
 import Login from './routes/login';
 import Register from './routes/register';
 import { useState } from 'react';
+import Edit from './routes/Edit';
 
 const PARSE_APPLICATION_ID = 'q4F1zNj3A1adPXkE9NB3OnpOVYHuqRxQb4HRjmqG';
 const PARSE_HOST_URL = 'https://parseapi.back4app.com/';
@@ -67,6 +68,7 @@ function App() {
           <Route path='/register' element={<Register loginCallback={loginCallback} />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/create' element={<Create />} />
+          <Route path='/edit' element={<Edit />} />
         </Routes>
       </>
       <footer>All rights reserved &copy;</footer>
