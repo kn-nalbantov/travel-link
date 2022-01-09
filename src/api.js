@@ -142,3 +142,15 @@ export async function getDestinationsByOwnerId(ownerId) {
     console.error('Error while fetching destinations', error);
   }
 }
+
+export async function getDestinationById(id) {
+  const destinations = Parse.Object.extend('destinations');
+  const query = new Parse.Query(destinations);
+  query.equalTo('objectId', id);
+  try {
+    const results = await query.find();
+    return results;
+  } catch (error) {
+    console.error('Error while fetching destinations', error);
+  }
+}
