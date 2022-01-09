@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { getDestinationsByOwnerId, getUserData } from '../api';
 
 export default function Profile() {
@@ -19,15 +20,17 @@ export default function Profile() {
 
   return (
     <>
-      <h2 className="banner-header">My Publications</h2>
+      <h2 className='banner-header'>My Publications</h2>
       <main>
         {destinations.map(x => (
-          <div className='travelCard' key={x.attributes.createdAt}>
+          <div className='travelCard' key={x.attributes.createdAt} id={x.id}>
             <h2>{x.attributes.name}</h2>
             <p>Region: {x.attributes.region}</p>
             <img src={x.attributes.img._url} alt={x.attributes.img._name} />
             <button className='detailsBtn'>Details</button>
-            <button className='editBtn'>Edit</button>
+            <button className='editBtn'>
+              <Link to={'/edit/'+ x.id}>Edit</Link>
+            </button>
           </div>
         ))}
       </main>
