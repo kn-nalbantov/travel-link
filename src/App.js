@@ -68,7 +68,7 @@ function App() {
           <Route path='/register' element={<Register loginCallback={loginCallback} />} />
           <Route path='/profile' element={<Profile />} />
           <Route path='/create' element={<Create />} />
-          <Route path='/edit' element={<Edit />} />
+          <Route path='/edit/:id' element={<Edit />} />
         </Routes>
       </>
       <footer>All rights reserved &copy;</footer>
