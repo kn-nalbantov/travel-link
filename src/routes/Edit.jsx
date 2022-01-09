@@ -1,7 +1,24 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getDestinationById } from '../api';
+
 export default function Edit() {
+  const urlParams = useParams();
+  const [destination, setDestination] = useState([{ attributes: {} }]);
+
   function onClick(e) {
     e.target.nextElementSibling.focus();
   }
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await getDestinationById(urlParams.id);
+      setDestination(res);
+    }
+    fetchData();
+  });
+
+  // console.log(destination[0].attributes)
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -21,11 +38,11 @@ export default function Edit() {
           <label htmlFor='name' onClick={onClick}>
             Name
           </label>
-          <input type='text' name='name' />
+          <input type='text' name='name' value={destination[0].attributes.name} />
           <label htmlFor='region' onClick={onClick}>
             Region
           </label>
-          <input type='text' name='region' />
+          <input type='text' name='region' value={destination[0].attributes.region} />
           <label htmlFor='img' onClick={onClick}>
             Select an image
           </label>
@@ -33,7 +50,7 @@ export default function Edit() {
           <label htmlFor='description' onClick={onClick}>
             Description
           </label>
-          <textarea name='description' cols='20' rows='5'></textarea>
+          <textarea name='description' cols='20' rows='5' value={destination[0].attributes.description}></textarea>
           <input type='submit' value='Submit' />
         </form>
       </div>
