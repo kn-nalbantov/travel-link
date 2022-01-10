@@ -114,27 +114,49 @@ export async function createDestination(name, region, img, description) {
   } catch (error) {
     console.error('Error while creating destinations: ', error);
   }
+}
 
-  function getBase64(file) {
-    return new Promise(function (resolve, reject) {
-      let reader = new FileReader();
-      reader.onload = function () {
-        resolve(reader.result);
-      };
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
+export async function updateDestination(id, name, region, img, description) {
+  const fileToBase64 = await getBase64(img);
+  const query = new Parse.Query('destinations');
+  try {
+    // here you put the objectId that you want to update
+    const object = await query.get(id);
+    object.set('name', name);
+    object.set('region', region);
+    object.set('img', new Parse.File(img.name, { base64: fileToBase64 }));
+    object.set('description', description);
+    object.set('createdBy', Parse.User.current());
+    try {
+      const response = await object.save();
+      console.log('destinations updated', response);
+    } catch (error) {
+      console.error('Error while updating destinations', error);
+    }
+  } catch (error) {
+    console.error('Error while retrieving object destinations', error);
   }
+}
+
+function getBase64(file) {
+  return new Promise(function (resolve, reject) {
+    let reader = new FileReader();
+    reader.onload = function () {
+      resolve(reader.result);
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
 }
 
 export async function getDestinationsByOwnerId(ownerId) {
   const destinations = Parse.Object.extend('destinations');
   const query = new Parse.Query(destinations);
   query.equalTo('createdBy', {
-    "__type": "Pointer",
-    "className": "_User",
-    "objectId": ownerId
-});
+    '__type': 'Pointer',
+    'className': '_User',
+    'objectId': ownerId,
+  });
   try {
     const results = await query.find();
     return results;

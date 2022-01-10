@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getDestinationById } from '../api';
+import { getDestinationById, updateDestination } from '../api';
 
 export default function Edit() {
   const urlParams = useParams();
@@ -16,7 +16,7 @@ export default function Edit() {
       setDestination(res);
     }
     fetchData();
-  });
+  }, [urlParams.id]);
 
   // console.log(destination[0].attributes)
 
@@ -28,6 +28,12 @@ export default function Edit() {
     const region = formData.get('region');
     const img = formData.get('img');
     const description = formData.get('description');
+
+    if (name === '' || region === '' || img === '' || description === '') {
+      return alert('All fields are required!');
+    }
+
+    await updateDestination(urlParams.id, name, region, img, description);
   }
 
   return (
