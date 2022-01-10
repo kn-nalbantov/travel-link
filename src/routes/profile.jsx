@@ -16,7 +16,7 @@ export default function Profile() {
       setDestinations(res);
     }
     fetchData();
-  });
+  }, [ownerId]);
 
   return (
     <>
@@ -29,7 +29,7 @@ export default function Profile() {
             <img src={x.attributes.img._url} alt={x.attributes.img._name} />
             <button className='detailsBtn'>Details</button>
             <button className='editBtn'>
-              <Link to={'/edit/'+ x.id}>Edit</Link>
+              <Link to={'/edit/' + x.id}>Edit</Link>
             </button>
           </div>
         ))}
