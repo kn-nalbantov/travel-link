@@ -4,6 +4,13 @@ import { getDestinationsByOwnerId, getUserData } from '../api';
 
 export default function Profile() {
   const [destinations, setDestinations] = useState([]);
+  const [visible, setVisible] = useState({ display: 'none' });
+  function onClick() {
+    setVisible({ display: 'block' });
+    if (visible.display === 'block') {
+      setVisible({ display: 'none' });
+    }
+  }
   const userData = getUserData();
   let ownerId;
   if (userData) {
@@ -27,7 +34,7 @@ export default function Profile() {
             <h2>{x.attributes.name}</h2>
             <p>Region: {x.attributes.region}</p>
             <img src={x.attributes.img._url} alt={x.attributes.img._name} />
-            <button className='detailsBtn'>Details</button>
+            <button className='detailsBtn' onClick={onClick}>Details</button>
             <button className='editBtn'>
               <Link to={'/edit/' + x.id}>Edit</Link>
             </button>
