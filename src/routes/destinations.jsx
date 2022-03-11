@@ -4,11 +4,12 @@ import * as _data from '../dummy-data.json';
 
 export default function Destinations() {
   const [destinations, setDestinations] = useState(_data.results); //FOR TESTING PURPOSES
-  const [visible, setVisible] = useState({ display: 'none' });
-  function onClick() {
-    setVisible({ display: 'block' });
-    if (visible.display === 'block') {
-      setVisible({ display: 'none' });
+  function onClick(e) {
+    let descriptionPara = e.target.parentNode.children[4];
+    if (descriptionPara.style.display === 'none') {
+      descriptionPara.style.display = 'block';
+    } else {
+      descriptionPara.style.display = 'none';
     }
   }
 
@@ -33,7 +34,7 @@ export default function Destinations() {
             <button className='detailsBtn' onClick={onClick}>
               Details
             </button>
-            <p style={visible}>
+            <p style={{'display': 'none'}}>
               {x.description}
             </p>
           </div>
